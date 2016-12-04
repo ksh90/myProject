@@ -1,7 +1,5 @@
 package com.kosta.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ import com.kosta.service.MemberService;
 import com.kosta.vo.MemberVO;
 
 @Controller
+@RequestMapping(value="userLibrary/member/*")
 public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);

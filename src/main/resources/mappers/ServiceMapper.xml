@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ServiceMapper">
+
+<!-- 문화행사 목록(10페이지씩 보여줌) -->
+<select id="cultureList" resultType="ApplyBoardVO">
+SELECT NUM, CATEGORY, TITLE, ID, WRITEDATE, MAX, NOW, VIEW
+FROM LIB_CULTURE
+WHERE NUM>0
+ORDER BY NUM DESC, WRITEDATE DESC
+LIMIT #{printPage}, 10
+</select>
+
+<select id="cultureCount" resultType="int">
+SELECT COUNT(NUM)
+FROM LIB_CULTURE
+WHERE NUM>0
+</select>
+
+
+</mapper>

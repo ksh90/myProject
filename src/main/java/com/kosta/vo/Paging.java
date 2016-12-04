@@ -1,6 +1,6 @@
 package com.kosta.vo;
 
-//페이징 처리는 자꾸 잊어버려서 주석을 꼼꼼하게 달아놓음 
+//페이징 처리, 무조건 10개단위로 끊음
 public class Paging {
   //보여줄 페이지 번호
   private int page;
@@ -14,17 +14,22 @@ public class Paging {
   private boolean prev;
   //다음버튼
   private boolean next;
+  
+  //기본 생성자를 이용해 페이지 초기값을 1로
+  public Paging() {
+	  this.page=1;
+	  }
 
   //보여줄 페이지 번호
   //EX> 3페이지
   public void setPage(int page) {
 
-    if (page <= 0) {
-      this.page = 1;
+    if(page<=0) {
+      this.page=1;
       return;
     }
 
-    this.page = page;
+    this.page=page;
   }
 
   public int getPage() {
@@ -34,7 +39,7 @@ public class Paging {
   //시작데이터의수(보여줄 페이지 번호-1 * 10)
   //EX> 3페이지는 20~30번의 글을 보여줘야함
   //	그러므로 (3-1)*10=20부터 보여주는것을 계산
-  public int getPageWriting() {
+  public int getPrintPage() {
     return (this.page - 1) * 10;
   }
   
@@ -86,5 +91,11 @@ public class Paging {
 
 	public boolean isNext() {
 		return next;
+	}
+
+	@Override
+	public String toString() {
+		return "Paging [page=" + page + ", totalCount=" + totalCount + ", startPage=" + startPage + ", endPage="
+				+ endPage + ", prev=" + prev + ", next=" + next + "]";
 	}
 }
